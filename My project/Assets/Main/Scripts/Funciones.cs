@@ -16,12 +16,14 @@ public class Funciones : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MyFuncion();
+        
     }
 
     public void MyFuncion()
     {
-        Debug.Log("My función");
+        Debug.Log(ListaEstudiantes.estudiantes[2]);
+        Debug.Log(ListaEstudiantes.edadEstudiantes[2]);
+  
     }
 
 
