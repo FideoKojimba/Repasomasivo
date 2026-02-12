@@ -4,8 +4,7 @@ public class PlayerModel : MonoBehaviour
 {
     [SerializeField]
     private PlayerController playerController;
-
-    public bool isMove;
+    public Rigidbody rb;
     float velocidad = 5f;
 
     // Update is called once per frame
@@ -16,9 +15,9 @@ public class PlayerModel : MonoBehaviour
 
     private void Movimiento () 
     { 
-        if (isMove) 
-        {
-            rb.linearVelocity = playerController.DireccionJugador() * velocidad;
-        }
+        
+            rb.linearVelocity = playerController.DireccionJugador() 
+                * velocidad;
+    
     }
 }

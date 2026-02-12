@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public Vector2 DireccionJugador ()
+    public Vector2 DireccionJugador()
         {
         return moveAction.ReadValue<Vector2>();
         }
