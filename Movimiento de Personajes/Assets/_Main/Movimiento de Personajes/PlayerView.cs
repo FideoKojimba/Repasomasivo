@@ -30,7 +30,7 @@ public class PlayerView : MonoBehaviour
     public void CambiarColor()
 
     {
-        if (controller.DireccionJugador()magnitude > 0)
+        if (controller.DireccionJugador().magnitude > 0)
         {
             render.material.color = Color.red;
         }

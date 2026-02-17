@@ -16,7 +16,7 @@ public class Multiplicar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MultiplicarNumeros(float.Parse(_inputfileNumero1)
+        MultiplicarNumeros(float.Parse(_inputfileNumero1.text), float.Parse(_inputfileNumero2.text));
     }
 
     public int MultiplicarNumeros(float a,  float b)
