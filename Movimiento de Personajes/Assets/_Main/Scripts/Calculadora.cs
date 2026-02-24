@@ -1,35 +1,106 @@
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 
 public class Calculadora : MonoBehaviour
+
 {
+	public enum Operador
+	{
+		Suma,
+		Resta,
+		Multiplicación,
+		División,
+		ClearData
+	}
+
+	[Header("Inputs")]
 	[SerializeField] private TMP_InputField _InputA;
 	[SerializeField] private TMP_InputField _InputB;
 
-	public float ConvertirStringaFloat(string input)
+	[Header("Outputs")]
+	[SerializeField] private TMP_Text _resultado;
+
+	[Header("Config")]
+	[SerializeField] private Operador _operador;
+	public void SeleccionarOperador(Operador operador)
 	{
-		return float.Parse(input);
+		_operador = operador;	
 	}
 
-	public string Calcular(string Operador, float inputA, float inputB)
+	public void OperadorSuma()=> _operador = Operador.Suma;
+	public void OperadorResta()
+	{
+		_operador = Operador.Resta;
+
+		if (_operador != Operador.Suma)
+			Debug.Log("No es suma");
+	}
+	public void OperadorMultiplicación()
+	{
+		_operador = Operador.Multiplicación;
+	}
+
+    public void OperadorDivision()
+    {
+		_operador = Operador.División;
+    }
+
+    public void OperadorClearData()
+    {
+        _operador = Operador.ClearData;
+    }
+
+
+    public void Calcular()
 
 	{
-		switch (Operador)
+		float.TryParse(_InputA.text, out float a);
+		float.TryParse(_InputB.text, out float b);
+
+		if(!float.TryParse(_InputA.text,out a)||!float.TryParse(_InputB.text, out b))
 		{
-			case "+":
-				return (inputA + inputB).ToString();
+			_resultado.text = "Agrega un cáracter válido";
+			return;
+		}
+	
+
+		
+
+		switch (_operador)
+		{
+			case Operador.Suma:
+				_resultado.text = (a + b).ToString();
 				break;
-			case "-":
-				return (inputA - inputB).ToString();
+			case Operador.Resta:
+                _resultado.text = (a - b).ToString();
 				break;
-			case "*":
-				return (inputA * inputB).ToString();
+            case Operador.Multiplicación :
+				_resultado.text = (a * b).ToString(); 
 				break;
-			case "/":
-				return (inputA / inputB).ToString();
+			case Operador.División:
+				if (b ==0)
+					{
+					_resultado.text = "No se puede dividir en cero";
+					}
+				else
+				{
+					_resultado.text =(a/b).ToString();	
+				}
+
+                _resultado.text = (a / b).ToString();
 				break;
+
+			case Operador.ClearData:
+				_InputA.text = "";
+                _InputB.text = "";
+
+                _resultado.text = "";
+				break;
+
+
 			default:
-				Debug.Log("S no pones un Operador tienes 0");
+				_resultado.text = "Oprime un operador válido";
 				break;
 
 

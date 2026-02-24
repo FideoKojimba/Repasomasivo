@@ -19,7 +19,7 @@ public class Multiplicar : MonoBehaviour
         MultiplicarNumeros(float.Parse(_inputfileNumero1.text), float.Parse(_inputfileNumero2.text));
     }
 
-    public int MultiplicarNumeros(float a,  float b)
+    public float MultiplicarNumeros(float a,  float b)
     {
         return a * b;
     }
